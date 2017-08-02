@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<!DOCTYPE configuration   
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">   
+    
+<configuration>   
+   	<!-- 基础配置 -->	
+    <settings>   
+        <!-- changes from the defaults for testing -->   
+        <setting name="cacheEnabled" value="false" />   
+        <setting name="useGeneratedKeys" value="true" />   
+        <setting name="defaultExecutorType" value="REUSE" />   
+    </settings>   
+    
+   	<!-- 实体表配置 -->	
+    <typeAliases>   
+       <typeAlias alias="User" type="com.hg.entity.User"/>  
+       <typeAlias alias="Log" type="com.hg.entity.Log"/>  
+    </typeAliases>   
+    
+    <!-- 数据源配置 -->
+    <environments default="development">   
+       <environment id="development">   
+           <transactionManager type="jdbc"/>
+           <!-- 配置数据源 -->   
+           <dataSource type="POOLED">   
+              <property name="driver" value="oracle.jdbc.OracleDriver"/>   
+              <property name="url" value="jdbc:oracle:thin:@//192.168.1.2:1521/orcl"/>   
+              <property name="username" value="IBMP_HG"/>   
+              <property name="password" value="IBMP_HG"/>   
+           </dataSource>   
+       </environment>   
+    </environments>   
+    
+    <!-- 配置实体映射 -->
+    <mappers>   
+        <mapper resource="mappers/UserMapper.xml" />   
+        <mapper resource="mappers/LogMapper.xml" />   
+    </mappers>   
+</configuration>
